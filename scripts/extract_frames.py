@@ -10,11 +10,16 @@ def extract(video_path,frames_dir):
             video_file = os.path.join(video_path,file_name)
             cap = cv2.VideoCapture(video_file)
 
+            if not cap.isOpened():
+                print(f"open failed")
+                continue
+
             video_name = os.path.splitext(file_name)[0]
             output_dir = os.path.join(frames_dir,video_name)
             os.makedirs(output_dir, exist_ok=True)
 
             count = 0
+
             frame_index = 0
             success, frame = cap.read()
             while success:
@@ -24,6 +29,7 @@ def extract(video_path,frames_dir):
                     count += 1
                 frame_index += 1
                 success, frame = cap.read()
+
 
             cap.release()
 

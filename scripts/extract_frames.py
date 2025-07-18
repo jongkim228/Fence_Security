@@ -6,7 +6,7 @@ frames_dir = "/workspaces/Fence_Security/frames"
 
 def extract(video_path,frames_dir):
     for file_name in os.listdir(video_path):
-        if file_name.endwith(".mp4"):
+        if file_name.endswith(".mp4"):
             video_file = os.path.join(video_path,file_name)
             cap = cv2.VideoCapture(video_file)
 
@@ -15,12 +15,15 @@ def extract(video_path,frames_dir):
             os.makedirs(output_dir, exist_ok=True)
 
             count = 0
-            success = True
+            frame_index = 0
+            success, frame = cap.read()
             while success:
+                if frame_index % 5 == 0:
+                    frame_path = os.path.join(output_dir,f"frame{count:004d}.jpg")
+                    cv2.imwrite(frame_path,frame)
+                    count += 1
+                frame_index += 1
                 success, frame = cap.read()
-                frame_path = os.path.join(output_dir,f"frame{count:004d}")
-                cv2.imwrite(frame_path,frame)
-                count += 1
 
             cap.release()
 

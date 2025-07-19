@@ -4,6 +4,3 @@
 [submodule "yolov5"]
 	path = yolov5
 	url = https://github.com/ultralytics/yolov5.git
-[submodule "cvat"]
-	path = cvat
-	url = https://github.com/opencv/cvat.git

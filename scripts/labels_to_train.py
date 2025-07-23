@@ -16,7 +16,7 @@ for sample_num in range(1,5):
     for filename in files:
         if filename.endswith('.txt'):
             old_path = os.path.join(sample_dir,filename)
-            new_filename = f'sample{sample_num}_frame_{i}.txt'
+            new_filename = f'sample{sample_num}_frame_{i:04d}.txt'
             new_path = os.path.join(OUTPUT,new_filename)
             os.rename(old_path,new_path)
             i += 1

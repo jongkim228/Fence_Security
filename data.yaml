@@ -1,5 +1,0 @@
-train: frames/train
-val: frames/val
-
-nc: 3
-names: ['climbing','walking','fence']

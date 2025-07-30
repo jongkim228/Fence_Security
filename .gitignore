@@ -1,2 +1,11 @@
 cvat/
-cvat/
+
+venv/
+fence/lib/
+*.dylib
+
+
+
+*.dylib
+*.so
+*.dllfence/lib/

@@ -13,3 +13,4 @@ fence/lib/python3.10/site-packages/torch/
 temp_repo/
 fence/lib/python3.10/site-packages/torch/lib/libtorch_cpu.dylib
 fence/lib/python3.10/site-packages/torch/lib/libtorch_cpu.dylib
+fence/lib/python3.10/site-packages/torch/lib/libtorch_cpu.dylib

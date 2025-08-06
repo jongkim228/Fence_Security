@@ -35,7 +35,7 @@ def extract(video_path, frames_dir):
         success, frame = cap.read()
         while success:
             if frame_index % 5 == 0:
-                frame_path = os.path.join(output_dir, f"frame{count:04d}.jpg")
+                frame_path = os.path.join(output_dir, f"sample{sample_index:01d}frame{count:04d}.jpg")
                 cv2.imwrite(frame_path, frame)
                 count += 1
             frame_index += 1

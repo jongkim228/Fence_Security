@@ -5,9 +5,9 @@ video_path = "../videos"
 frames_dir = "../frames"
 
 def extract(video_path, frames_dir):
-    sample_index = 1
     files = sorted(os.listdir(video_path))
-    start_found = False
+    sample_index = 1
+
     for file_name in files:
         if not file_name.endswith(".mp4"):
             continue
@@ -24,10 +24,8 @@ def extract(video_path, frames_dir):
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
                 break
-            else:
-                sample_index += 1
+            sample_index += 1
         video_name = os.path.splitext(file_name)[0]
-        output_dir = os.path.join(frames_dir, video_name)
         os.makedirs(output_dir, exist_ok=True)
 
         count = 0
@@ -35,14 +33,14 @@ def extract(video_path, frames_dir):
         success, frame = cap.read()
         while success:
             if frame_index % 5 == 0:
-                frame_path = os.path.join(output_dir, f"sample{sample_index:01d}frame{count:04d}.jpg")
+                frame_path = os.path.join(output_dir, f"sample{sample_index}frame{count:04d}.jpg")
                 cv2.imwrite(frame_path, frame)
                 count += 1
             frame_index += 1
             success, frame = cap.read()
 
         cap.release()
-    sample_index += 1
+        sample_index += 1
 extract(video_path, frames_dir)
 
 

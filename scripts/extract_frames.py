@@ -1,32 +1,36 @@
 import cv2
 import os
+import re
 
 video_path = "../videos"
 frames_dir = "../frames"
 
 def extract(video_path, frames_dir):
-    files = sorted(os.listdir(video_path))
+    # 숫자를 기준으로 정렬하기 위한 정렬 함수
+    def extract_number(file_name):
+        match = re.search(r'\d+', file_name)
+        return int(match.group()) if match else -1
+
+    files = sorted(
+        [f for f in os.listdir(video_path) if f.endswith(".mp4")],
+        key=extract_number
+    )
+
     sample_index = 1
 
     for file_name in files:
-        if not file_name.endswith(".mp4"):
-            continue
-
         video_file = os.path.join(video_path, file_name)
         cap = cv2.VideoCapture(video_file)
         if not cap.isOpened():
             print(f"open failed: {file_name}")
             continue
 
-
         while True:
-            output_dir = os.path.join(frames_dir, f"sample{sample_index:01d}")
+            output_dir = os.path.join(frames_dir, f"sample{sample_index}")
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
                 break
             sample_index += 1
-        video_name = os.path.splitext(file_name)[0]
-        os.makedirs(output_dir, exist_ok=True)
 
         count = 0
         frame_index = 0
@@ -41,12 +45,5 @@ def extract(video_path, frames_dir):
 
         cap.release()
         sample_index += 1
+
 extract(video_path, frames_dir)
-
-
-    
-
-
-
-
-    

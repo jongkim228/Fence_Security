@@ -6,7 +6,6 @@ video_path = "../videos"
 frames_dir = "../frames"
 
 def extract(video_path, frames_dir):
-    # 숫자를 기준으로 정렬하기 위한 정렬 함수
     def extract_number(file_name):
         match = re.search(r'\d+', file_name)
         return int(match.group()) if match else -1

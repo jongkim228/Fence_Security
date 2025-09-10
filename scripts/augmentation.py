@@ -16,4 +16,3 @@ label_val = "../dataset/val"
 
 for frame in os.listdir(frame_train):
     if frame.endswith(".jpg"):
-

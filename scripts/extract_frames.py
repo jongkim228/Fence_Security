@@ -11,7 +11,7 @@ def extract(video_path, frames_dir):
         return int(match.group()) if match else -1
 
     files = sorted(
-        [f for f in os.listdir(video_path) if f.endswith(".mp4")],
+        [f for f in os.listdir(video_path) if f.endswith(".avi")],
         key=extract_number
     )
 

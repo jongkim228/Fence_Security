@@ -11,6 +11,9 @@ A YOLOv5-based climbing intrusion detection system is motivated from military ex
 
 ## Demo
 Test Sample videos are included in the repository(`Test_sample.mov`, `Test_sample1.mov`, `Test_sample2.mov`).
+| Walking Detection | Climbing Detection |
+|---|---|
+| ![walking](Demo1.png) | ![climbing](Demo2.png) |
 
 ##Model Performance
 Trained on a custom dataset (586 images, annotated with CVAT):
